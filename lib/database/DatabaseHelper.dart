@@ -35,14 +35,44 @@ class DatabaseHelper {
     return await db.update(
       "MoneyFlow",
       transaction.toMap(),
-      where: "id = ?",
+      where: "ID = ?",
       whereArgs: [transaction.id],
       conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  } //find a way to add ID
+
+  Future<int> deleteTransaction(MoneyFlowOperations transaction) async {
+    Database db = await instance.db;
+    if (transaction.id == null) {
+      throw Exception(
+        "Cannot update a transaction without an ID. The ID must be populated from a retrieved record.",
+      );
+    }
+    return await db.delete(
+      "MoneyFlow",
+      where: "ID = ?",
+      whereArgs: [transaction.id],
     );
   } //find a way to add ID
 
   Future<List<Map<String, dynamic>>> retrieveTransactions() async {
     Database db = await instance.db;
     return await db.query('MoneyFlow');
+  }
+
+  Future<List<Map<String, dynamic>>> retrieveTransaction(
+    MoneyFlowOperations transaction,
+  ) async {
+    Database db = await instance.db;
+    if (transaction.id == null) {
+      throw Exception(
+        "Cannot update a transaction without an ID. The ID must be populated from a retrieved record.",
+      );
+    }
+    return await db.query(
+      'MoneyFlow',
+      where: "ID = ?",
+      whereArgs: [transaction.id],
+    );
   }
 }

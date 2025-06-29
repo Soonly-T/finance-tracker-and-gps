@@ -19,25 +19,25 @@ class MoneyFlowOperations {
 
   Map<String, dynamic> toMap() {
     return {
-      "id": id,
-      "title": title,
-      "amount": amount,
-      "category": category,
-      "description": description,
-      "dateOfTransaction": dateOfTransaction,
-      "proofOfPayment": proofOfPayment,
+      "Id": id,
+      "Title": title,
+      "Amount": amount,
+      "Category": category,
+      "Description": description,
+      "DateOfTransaction": dateOfTransaction,
+      "ProofOfPayment": proofOfPayment,
     };
   }
 
   factory MoneyFlowOperations.fromMap(Map<String, dynamic> map) {
     return MoneyFlowOperations(
-      id: map["id"] as int?,
-      title: map["title"] as String,
-      amount: map["amount"] as double,
-      category: map["category"] as String,
-      description: map["description"] as String?,
-      dateOfTransaction: map["dateOfTransaction"] as String,
-      proofOfPayment: map["proofOfPayment"] as String?,
+      id: map["ID"] as int?,
+      title: map["Title"] as String,
+      amount: map["Amount"] as double,
+      category: map["Category"] as String,
+      description: map["Description"] as String?,
+      dateOfTransaction: map["DateOfTransaction"] as String,
+      proofOfPayment: map["ProofOfPayment"] as String?,
     );
   }
 
