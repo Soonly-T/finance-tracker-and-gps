@@ -75,4 +75,9 @@ class DatabaseHelper {
       whereArgs: [transaction.id],
     );
   }
+
+  Future<List<Map<String, dynamic>>> retrieveCoordinates() async {
+    Database db = await instance.db;
+    return await db.query("Coordinates");
+  }
 }
